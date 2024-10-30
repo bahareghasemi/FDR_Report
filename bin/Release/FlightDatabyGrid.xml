@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="185.116.160.97,2014_FDRHH_Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="185.116.160.97,2014" />
+          <Parameter Name="database" Value="FDRHH" />
+          <Parameter Name="useIntegratedSecurity" Value="False" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="WinUsers" />
+          <Parameter Name="password" Value="Crew1018!)!*" />
+        </Parameters>
+      </Connection>
+      <Query Type="StoredProcQuery" Name="MakeReport_FlightData">
+        <Parameter Name="@Start" Type="DevExpress.DataAccess.Expression">(System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)([Parameters.Start])</Parameter>
+        <Parameter Name="@Finish" Type="DevExpress.DataAccess.Expression">(System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)([Parameters.Finish])</Parameter>
+        <Parameter Name="@DepStn" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@ArrStn" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@Stn" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@ACType" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@ACReg" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@FltNo" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@Title" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@OccuranceNo" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <Parameter Name="@Color" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)('%')</Parameter>
+        <ProcName>MakeReport_FlightData</ProcName>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="MakeReport_FlightData">
+            <Field Name="DateUTC" Type="DateTime" />
+            <Field Name="FltNo" Type="String" />
+            <Field Name="DepStn" Type="String" />
+            <Field Name="ArrStn" Type="String" />
+            <Field Name="ACReg" Type="String" />
+            <Field Name="Status" Type="String" />
+            <Field Name="STD" Type="DateTime" />
+            <Field Name="OffBlock" Type="DateTime" />
+            <Field Name="Takeoff" Type="DateTime" />
+            <Field Name="STA" Type="DateTime" />
+            <Field Name="Landing" Type="DateTime" />
+            <Field Name="OnBlock" Type="DateTime" />
+            <Field Name="OccuranceNo" Type="String" />
+            <Field Name="Color" Type="String" />
+            <Field Name="Begin" Type="String" />
+            <Field Name="End" Type="String" />
+            <Field Name="Length" Type="String" />
+            <Field Name="Limit" Type="String" />
+            <Field Name="Actual" Type="String" />
+            <Field Name="FDRFltNo" Type="String" />
+            <Field Name="Crew" Type="String" />
+            <Field Name="Pos" Type="String" />
+            <Field Name="ScheduleName" Type="String" />
+            <Field Name="ErrorShortName" Type="String" />
+            <Field Name="Title" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" CommandTimeout="0" />
+    </SqlDataSource>
+  </DataSources>
+  <Parameters>
+    <Parameter Name="Start" Type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="2018-09-15T00:00:00" />
+    <Parameter Name="Finish" Type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="2018-09-15T00:00:00" />
+  </Parameters>
+  <Items>
+    <Grid ComponentName="gridDashboardItem1" Name="Flight Data Report" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData">
+      <DataItems>
+        <Dimension DataMember="DateUTC" DateTimeGroupInterval="None" DefaultId="DataItem0" />
+        <Dimension DataMember="ACReg" DefaultId="DataItem1" />
+        <Dimension DataMember="FltNo" DefaultId="DataItem2" />
+        <Dimension DataMember="DepStn" DefaultId="DataItem3" />
+        <Dimension DataMember="ArrStn" DefaultId="DataItem4" />
+        <Dimension DataMember="ScheduleName" DefaultId="DataItem5" />
+        <Dimension DataMember="OccuranceNo" DefaultId="DataItem6" />
+        <Dimension DataMember="Title" DefaultId="DataItem7" />
+        <Dimension DataMember="Begin" DefaultId="DataItem8" />
+        <Dimension DataMember="End" DefaultId="DataItem9" />
+        <Dimension DataMember="Color" DefaultId="DataItem10" />
+      </DataItems>
+      <FormatRules>
+        <GridItemFormatRule Name="FormatRule 1" Enabled="false" DataItemApplyTo="DataItem0">
+          <FormatConditionRangeSet ValueType="Percent">
+            <RangeSet>
+              <Ranges>
+                <RangeInfo>
+                  <Value Type="System.Double" Value="0" />
+                  <IconSettings IconType="ShapeRedDiamond" />
+                </RangeInfo>
+                <RangeInfo>
+                  <Value Type="System.Double" Value="33" />
+                  <IconSettings IconType="ShapeYellowTriangle" />
+                </RangeInfo>
+                <RangeInfo>
+                  <Value Type="System.Double" Value="67" />
+                  <IconSettings IconType="ShapeGreenCircle" />
+                </RangeInfo>
+              </Ranges>
+            </RangeSet>
+          </FormatConditionRangeSet>
+        </GridItemFormatRule>
+      </FormatRules>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem4" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem5" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem6" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem7" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem10" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem8" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem9" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+    <RangeFilter ComponentName="rangeFilterDashboardItem1" Name="Range Filter 1" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData" IsMasterFilterCrossDataSource="true">
+      <InteractivityOptions IgnoreMasterFilters="false" />
+      <DataItems>
+        <Dimension DataMember="DateUTC" DateTimeGroupInterval="DayMonthYear" DefaultId="DataItem0" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem1">
+          <Calculation>
+            <PercentOfTotal />
+          </Calculation>
+          <WindowDefinition>
+            <RangeFilterWindowDefinition />
+          </WindowDefinition>
+        </Measure>
+      </DataItems>
+      <Argument DefaultId="DataItem0" />
+      <Series>
+        <Simple SeriesType="Line">
+          <Value DefaultId="DataItem1" />
+        </Simple>
+      </Series>
+    </RangeFilter>
+    <ComboBox ComponentName="comboBoxDashboardItem1" Name="ACReg" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData" ComboBoxType="Checked">
+      <DataItems>
+        <Dimension DataMember="ACReg" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+    <ComboBox ComponentName="comboBoxDashboardItem2" Name="Crew" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData">
+      <DataItems>
+        <Dimension DataMember="ScheduleName" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+    <ComboBox ComponentName="comboBoxDashboardItem3" Name="FltNo" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData">
+      <DataItems>
+        <Dimension DataMember="FltNo" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+    <Treemap ComponentName="treemapDashboardItem1" Name="Color" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData">
+      <InteractivityOptions MasterFilterMode="Multiple" />
+      <DataItems>
+        <Dimension DataMember="Color" DefaultId="DataItem0" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+    </Treemap>
+    <ComboBox ComponentName="comboBoxDashboardItem4" Name="DepStn" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData">
+      <DataItems>
+        <Dimension DataMember="DepStn" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+    <ComboBox ComponentName="comboBoxDashboardItem5" Name="ArrStn" DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData">
+      <DataItems>
+        <Dimension DataMember="ArrStn" DefaultId="DataItem0" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </ComboBox>
+  </Items>
+  <ColorScheme>
+    <Entry DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData" PaletteIndex="12">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="-" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+    <Entry DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData" PaletteIndex="14">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="O" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+    <Entry DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData" PaletteIndex="1">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="R" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+    <Entry DataSource="dashboardSqlDataSource1" DataMember="MakeReport_FlightData" Color="-1186554">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="Y" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+  </ColorScheme>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="rangeFilterDashboardItem1" Weight="18.3752417794971" />
+      <LayoutItem DashboardItem="gridDashboardItem1" Weight="71.760154738878143" />
+      <LayoutGroup Weight="9.8646034816247585">
+        <LayoutItem DashboardItem="comboBoxDashboardItem1" Weight="17.709437963944858" />
+        <LayoutItem DashboardItem="comboBoxDashboardItem3" Weight="16.01272534464475" />
+        <LayoutItem DashboardItem="treemapDashboardItem1" Weight="15.906680805938494" />
+        <LayoutItem DashboardItem="comboBoxDashboardItem2" Weight="15.270413573700955" />
+        <LayoutItem DashboardItem="comboBoxDashboardItem4" Weight="17.6033934252386" />
+        <LayoutItem DashboardItem="comboBoxDashboardItem5" Weight="17.497348886532343" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

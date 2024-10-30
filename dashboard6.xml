@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="FlightData" />
+  <DataSources>
+    <SqlDataSource ComponentName="DataSource1">
+      <Name>MakeReport_FlightData_1</Name>
+      <Connection Datasource="185.116.160.97,2014" InitialCatalog="FDRHH" UserID="FDM" Password="fdmhh" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="MakeReport_FlightData_1">
+        <Parameter Name="@Start" Type="DevExpress.DataAccess.Expression">(null)(AddMonths( Today() ,-6 ))</Parameter>
+        <Parameter Name="@Finish" Type="DevExpress.DataAccess.Expression">(null)(Now())</Parameter>
+        <Parameter Name="@DepStn" Type="System.String">%</Parameter>
+        <Parameter Name="@ArrStn" Type="System.String">%</Parameter>
+        <Parameter Name="@Stn" Type="System.String">%</Parameter>
+        <Parameter Name="@ACType" Type="System.String">%</Parameter>
+        <Parameter Name="@ACReg" Type="System.String">%</Parameter>
+        <Parameter Name="@FltNo" Type="System.String">%</Parameter>
+        <Parameter Name="@Title" Type="System.String">%</Parameter>
+        <Parameter Name="@OccuranceNo" Type="System.String">%</Parameter>
+        <Parameter Name="@Color" Type="System.String">%</Parameter>
+        <ProcName>MakeReport_FlightData</ProcName>
+      </Query>
+      <ConnectionOptions CloseConnection="true" CommandTimeout="0" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Monthly" DataSource="DataSource1" DataMember="MakeReport_FlightData_1" IsMasterFilterCrossDataSource="true">
+      <InteractivityOptions MasterFilterMode="Multiple" />
+      <DataItems>
+        <Dimension DataMember="DateUTC" DateTimeGroupInterval="Month" DefaultId="DataItem1" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem0">
+          <NumericFormat Unit="Thousands" />
+        </Measure>
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Title="Count" />
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <AxisX TitleVisible="true" Title="Month" />
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="ACReg" DataSource="DataSource1" DataMember="MakeReport_FlightData_1" LabelContentType="ArgumentValueAndPercent" ShowPieCaptions="false">
+      <InteractivityOptions MasterFilterMode="Multiple" IsDrillDownEnabled="true" />
+      <DataItems>
+        <Dimension DataMember="ACReg" DefaultId="DataItem0" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Pie ComponentName="pieDashboardItem2" Name="Color" DataSource="DataSource1" DataMember="MakeReport_FlightData_1" ShowPieCaptions="false">
+      <ColoringOptions MeasuresColoringMode="None" />
+      <InteractivityOptions MasterFilterMode="Multiple" />
+      <DataItems>
+        <Dimension DataMember="Color" DefaultId="DataItem0" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem1" />
+        <Dimension DataMember="Color" ColoringMode="Hue" DefaultId="DataItem2" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem3">
+          <NumericFormat Precision="0" />
+        </Measure>
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem0" />
+      </HiddenDimensions>
+      <HiddenMeasures>
+        <Measure DefaultId="DataItem1" />
+      </HiddenMeasures>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem3" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem2" Name="Crew" DataSource="DataSource1" DataMember="MakeReport_FlightData_1" IsMasterFilterCrossDataSource="true">
+      <InteractivityOptions MasterFilterMode="Multiple" />
+      <DataItems>
+        <Dimension DataMember="Crew" TopNEnabled="true" TopNCount="20" TopNMeasure="DataItem1" DefaultId="DataItem0" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY TitleVisible="false" />
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem3" Name="Occurance NO" DataSource="DataSource1" DataMember="MakeReport_FlightData_1" IsMasterFilterCrossDataSource="true">
+      <InteractivityOptions MasterFilterMode="Multiple" />
+      <DataItems>
+        <Dimension DataMember="OccuranceNo" TopNEnabled="true" TopNCount="20" TopNMeasure="DataItem1" DefaultId="DataItem0" />
+        <Measure DataMember="OccuranceNo" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Visible="false" TitleVisible="false" />
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <ColorScheme>
+    <Entry DataSource="DataSource1" DataMember="MakeReport_FlightData_1" Color="-536566">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="O" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+    <Entry DataSource="DataSource1" DataMember="MakeReport_FlightData_1" Color="-390132">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="R" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+    <Entry DataSource="DataSource1" DataMember="MakeReport_FlightData_1" Color="-329216">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="Y" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+    <Entry DataSource="DataSource1" DataMember="MakeReport_FlightData_1" Color="-5525515">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Color" />
+          <Value Type="System.String" Value="-" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+  </ColorScheme>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical">
+        <LayoutGroup>
+          <LayoutGroup Orientation="Vertical">
+            <LayoutItem DashboardItem="pieDashboardItem1" />
+          </LayoutGroup>
+          <LayoutItem DashboardItem="chartDashboardItem1" />
+        </LayoutGroup>
+        <LayoutGroup>
+          <LayoutItem DashboardItem="pieDashboardItem2" Weight="57.911908646003262" />
+          <LayoutItem DashboardItem="chartDashboardItem3" Weight="142.08809135399673" />
+        </LayoutGroup>
+        <LayoutItem DashboardItem="chartDashboardItem2" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
